@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "1. Get organization ID",
+			"name": "Get organization ID",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -30,7 +30,7 @@
 			"response": []
 		},
 		{
-			"name": "2. Get network for org with id=681155 ({{meraki_org_id}})",
+			"name": "Get Network For Org. with id = 681155 ( {{meraki_org_id}} )",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -56,7 +56,7 @@
 			"response": []
 		},
 		{
-			"name": "2. Get deices for netwrok id=L_566327653141843049 ({{meraki_net_id}}",
+			"name": "Get Devices For Network id = L_566327653141843049 ( {{meraki_net_id}} )",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -76,6 +76,39 @@
 						"networks",
 						"{{meraki_net_id}}",
 						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Client List With {{meraki_net_id}}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{meraki_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{meraki_base_url}}/networks/{{meraki_net_id}}/clients?timespan=3600",
+					"protocol": "https",
+					"host": [
+						"{{meraki_base_url}}"
+					],
+					"path": [
+						"networks",
+						"{{meraki_net_id}}",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "timespan",
+							"value": "3600",
+							"description": "Fetched for the last hour"
+						}
 					]
 				}
 			},
