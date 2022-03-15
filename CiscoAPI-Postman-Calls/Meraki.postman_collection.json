@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "b18c9a6f-d811-4fda-a68a-754016b53840",
+		"name": "Meraki",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Get organization ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{meraki_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{meraki_base_url}}/organizations",
+					"protocol": "https",
+					"host": [
+						"{{meraki_base_url}}"
+					],
+					"path": [
+						"organizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get network for org with id=681155 ({{meraki_org_id}})",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{meraki_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{meraki_base_url}}/organizations/{{meraki_org_id}}/networks",
+					"protocol": "https",
+					"host": [
+						"{{meraki_base_url}}"
+					],
+					"path": [
+						"organizations",
+						"{{meraki_org_id}}",
+						"networks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get deices for netwrok id=L_566327653141843049 ({{meraki_net_id}}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{meraki_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{meraki_base_url}}/networks/{{meraki_net_id}}/devices",
+					"protocol": "https",
+					"host": [
+						"{{meraki_base_url}}"
+					],
+					"path": [
+						"networks",
+						"{{meraki_net_id}}",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

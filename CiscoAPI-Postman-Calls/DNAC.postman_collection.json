@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "d5aff585-7a82-47a6-82c9-0c40616373d8",
+		"name": "DNAC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody)\r",
+							"postman.setEnvironmentVariable(\"token\", data.Token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{dnac_password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{dnac_username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{dnac}}/dna/system/api/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of Devices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{dnac}}/dna/intent/api/v1/network-device",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Client Health Information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{dnac}}/dna/intent/api/v1/client-health",
+					"protocol": "https",
+					"host": [
+						"{{dnac}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"client-health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
